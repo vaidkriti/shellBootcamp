@@ -1,0 +1,84 @@
+{
+	"name": "dataflow1",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "DelimitedTextsrc",
+						"type": "DatasetReference"
+					},
+					"name": "Employeesource"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "AzureSqlTable1",
+						"type": "DatasetReference"
+					},
+					"name": "sqlsink1"
+				},
+				{
+					"dataset": {
+						"referenceName": "AzureSqlTable2",
+						"type": "DatasetReference"
+					},
+					"name": "sinkLT23"
+				}
+			],
+			"transformations": [
+				{
+					"name": "AgeGT23"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          Eid as integer,",
+				"          Ename as string,",
+				"          Eage as integer,",
+				"          Esalary as integer",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> Employeesource",
+				"Employeesource split(Eage>23,",
+				"     Eage<23,",
+				"     disjoint: false) ~> AgeGT23@(ageGT23, ageLT23)",
+				"AgeGT23@ageGT23 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          Eid as integer,",
+				"          Ename as string,",
+				"          Eage as integer,",
+				"          Esalary as integer",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError') ~> sqlsink1",
+				"AgeGT23@ageLT23 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          Eid as integer,",
+				"          Ename as string,",
+				"          Eage as integer,",
+				"          Esalary as integer",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError') ~> sinkLT23"
+			]
+		}
+	}
+}

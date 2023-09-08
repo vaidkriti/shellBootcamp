@@ -1,0 +1,37 @@
+{
+	"name": "AzureSqlTable2",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase2",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "Eid",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Ename",
+				"type": "varchar"
+			},
+			{
+				"name": "Eage",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Esalary",
+				"type": "int",
+				"precision": 10
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "EmpAgeLT"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
