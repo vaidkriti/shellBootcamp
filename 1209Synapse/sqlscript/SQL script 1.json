@@ -2,12 +2,12 @@
 	"name": "SQL script 1",
 	"properties": {
 		"content": {
-			"query": "-- This is auto-generated code\nSELECT\n    TOP 100 *\nFROM\n    OPENROWSET(\n        BULK 'https://azuresynapsestorage1.dfs.core.windows.net/dwtemp/Drilling_Dataset.csv',\n        FORMAT = 'CSV',\n        PARSER_VERSION = '2.0',\n        FIRSTROW=2\n    )WITH\n    (\n    RigID int 1,\n    DrillingDepth int 2,\n    DrillingSpeed int 3,\n    [Location] varchar(200) 4,\n    [Date] DATE 5 \n    ) AS [result]\n",
+			"query": "-- This is auto-generated code\nSELECT\n    TOP 100 *\nFROM\n    OPENROWSET(\n        BULK 'https://azuresynapsestorage1.dfs.core.windows.net/dwtemp/Drilling_Dataset.csv',\n        FORMAT = 'CSV',\n        PARSER_VERSION = '2.0',\n        FIRSTROW=2\n    )WITH\n    (\n    RigID int 1,\n    DrillingDepth int 2,\n    DrillingSpeed int 3,\n    [Location] varchar(200) 4,\n    [Date] DATE 5 \n    ) AS [result]\ncreate DATABASE demopool\ncreate external data source covid \nwith (LOCATION='https://pandemicdatalake.blob.core.windows.net/public/curated/covid-19/ecdc_cases/')\n\n\nselect top 10 *\nfrom openrowset(\nbulk 'latest/ecdc_cases.csv',\nDATA_SOURCE='covid',\nformat = 'csv',\nPARSER_VERSION='2.0',\nFIRSTROW=2\n) WITH\n\n    (\n        date_rep date 1,\n        [year] int 4,\n        cases int 5,\n        geo_id char(5) 8\n    )\n\n    AS [result]",
 			"metadata": {
 				"language": "sql"
 			},
 			"currentConnection": {
-				"databaseName": "master",
+				"databaseName": "demopool",
 				"poolName": "Built-in"
 			},
 			"resultLimit": 5000
