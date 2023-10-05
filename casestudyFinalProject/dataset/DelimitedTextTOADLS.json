@@ -1,0 +1,25 @@
+{
+	"name": "DelimitedTextTOADLS",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "GITtoAzureDataLakeStorage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "CO2_Emission.csv",
+				"folderPath": "Parent/Raw Sub Folder",
+				"fileSystem": "blobstoragekriti"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

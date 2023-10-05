@@ -1,0 +1,9 @@
+{
+	"name": "kriticasestudyadf",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "9b08d637-57af-4fcd-9be3-9677be90e340",
+		"tenantId": "dce87315-8ffa-4a01-ab40-0de5a7214b2f"
+	}
+}

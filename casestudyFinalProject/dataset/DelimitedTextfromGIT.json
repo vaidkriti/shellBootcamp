@@ -1,0 +1,72 @@
+{
+	"name": "DelimitedTextfromGIT",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "HttpServerGIT",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "HttpServerLocation",
+				"relativeUrl": "manojkumarsingh77/Shell2023/main/EVCarbonEmission/DataSets/CO2%20Emissions_Canada.csv"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "Make",
+				"type": "String"
+			},
+			{
+				"name": "Model",
+				"type": "String"
+			},
+			{
+				"name": "Vehicle Class",
+				"type": "String"
+			},
+			{
+				"name": "Engine Size(L)",
+				"type": "String"
+			},
+			{
+				"name": "Cylinders",
+				"type": "String"
+			},
+			{
+				"name": "Transmission",
+				"type": "String"
+			},
+			{
+				"name": "Fuel Type",
+				"type": "String"
+			},
+			{
+				"name": "Fuel Consumption City (L/100 km)",
+				"type": "String"
+			},
+			{
+				"name": "Fuel Consumption Hwy (L/100 km)",
+				"type": "String"
+			},
+			{
+				"name": "Fuel Consumption Comb (L/100 km)",
+				"type": "String"
+			},
+			{
+				"name": "Fuel Consumption Comb (mpg)",
+				"type": "String"
+			},
+			{
+				"name": "CO2 Emissions(g/km)",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
